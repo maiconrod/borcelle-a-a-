@@ -6,12 +6,23 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['var(--font-poppins)', 'sans-serif'],
+      gochi: ['var--(font-gochiHand)', 'sans-serif'],
+    },
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'bg-image': "url('/images/bg.jpg')"
       },
+      colors: {
+        'beige-header': '#CCC9AA',
+        'purple-contact': '#360B41',
+        'purple-cart': '#7d677e'
+      },
+      fontFamily: {
+        sans: ['var(--font-poppins)', 'sans-serif'],
+        gochi: ['var--(font-gochiHand)', 'sans-serif']
+      }
     },
   },
   plugins: [],
