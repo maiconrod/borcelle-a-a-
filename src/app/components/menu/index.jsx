@@ -7,8 +7,9 @@ import { ItemsMenu } from "../itemsMenu";
 
 export const Menu = () => {
   return (
-    <main className="">
+    <main>
       <div
+      id="menu"
       className="bg-beige-header flex items-center justify-center relative py-10 xl:py-10 lg:justify-end shadow-inner"
       >
         <h2 className="hidden lg:block text-end text-purple-contact text-6xl pr-32">
@@ -30,7 +31,7 @@ export const Menu = () => {
         <p className="text-center text-purple-contact text-xl md:text-3xl xl:text-3xl xl:mb-20 lg:hidden pb-5">
           Cardápio
         </p>
-        <div>
+        
           <motion.div
             initial={{ opacity: 0, y: -0 }}
             whileInView={{ opacity: 1, y: -100 }}
@@ -41,7 +42,7 @@ export const Menu = () => {
               alt="Imagem prato com açaí"
               width={750}
               height={750}
-              className="absolute hidden lg:block left-[-150px] top-0"
+              className="absolute hidden lg:block left-[-150px] top-[-200px]"
               unoptimized
             />
           </motion.div>
@@ -50,14 +51,14 @@ export const Menu = () => {
               className="hidden lg:block"
               initial={{ opacity: 0, y: -50 }}
               animate={{ opacity: 1, y: -250 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Image
                 src="/images/cardapio1.png"
                 alt="Imagem prato com açaí"
                 width={800}
                 height={800}
-                className="hidden absolute lg:block top-[1100px] left-[-250px]"
+                className="hidden absolute lg:block top-[1300px] left-[-250px]"
                 unoptimized
               />
             </motion.div>
@@ -65,12 +66,6 @@ export const Menu = () => {
             <ItemsMenu />
             </div>
           </div>
-        </div>
-        <div className="bg-beige-header  flex items-center justify-center pb-10 xl:py-16">
-          <button className="text-center font-light bg-purple-contact text-beige-header py-2 px-28  rounded-2xl sm:text-2xl shadow-md shadow-slate-950 hover:ring-2 hover:ring-purple-contact hover:bg-beige-header hover:text-purple-contact transition-all duration-300">
-            Ver carrinho
-          </button>
-        </div>
       </div>
     </main>
     

@@ -6,33 +6,35 @@ import { TbBrandFacebook } from "react-icons/tb";
 import { TbBrandInstagram } from "react-icons/tb";
 import { motion } from "framer-motion";
 import { AnimatedImage } from "@/app/components/animatedImage";
+import { scrollToElement } from "@/app/utils/scrollToElement";
 
 const SOCIAL_ITEMS = [
   {
     id: 1,
     icon: <TbBrandWhatsapp />,
-    href: "/",
+    href: "#",
   },
   {
     id: 2,
     icon: <TbBrandFacebook />,
-    href: "/",
+    href: "#",
   },
   {
     id: 3,
     icon: <TbBrandInstagram />,
-    href: "/",
+    href: "#",
   },
 ];
 
 export const HeroSection = () => {
+  
   return (
     <section className="w-full h-[580px] md:h-[920px] md:pb-4 lg:h-[530px] xl:h-[650px] lg:pb-10 overflow-auto bg-bg-image bg-cover bg-center bg-no-repeat ">
       <div className="lg:flex w-full justify-around lg:gap-60">
         <div className="lg:pt-24 lg:w-[500px]">
           <div className="w-full flex items-center justify-center lg:items-start lg:justify-start text-xl pt-10 lg:pt-1">
             <motion.span
-              className="text-white font-light lg:hidden"
+              className="text-white font-light lg:hidden font-gochi"
               initial={{ opacity: 0, x: -200 }}
               whileInView={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -200 }}
@@ -58,7 +60,9 @@ export const HeroSection = () => {
             exit={{ opacity: 0, x: -200 }}
             transition={{ duration: 0.7 }}
           >
-            <button className="text-purple-contact bg-beige-header px-10 md:px-20 py-1 md:py-2 md:text-2xl font-light rounded-2xl w-max mt-4 hover:ring-2 hover:ring-beige-header hover:bg-purple-contact hover:text-beige-header transition-all duration-300">
+            <button
+            onClick={() => scrollToElement("menu")}
+            className="text-purple-contact bg-beige-header px-10 md:px-20 py-1 md:py-2 md:text-2xl font-light rounded-2xl w-max mt-4 hover:ring-2 hover:ring-beige-header hover:bg-purple-contact hover:text-beige-header transition-all duration-300">
               Fazer pedido
             </button>
           </motion.div>

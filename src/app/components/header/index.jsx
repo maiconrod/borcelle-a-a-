@@ -3,13 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { scrollToElement } from "@/app/utils/scrollToElement";
+
 
 const NAV_ITEMS = [
   {
     label: "Cardápio",
+    id: 'menu'
   },
   {
     label: "Contato",
+    id: 'contact',
   },
 ];
 
@@ -35,9 +39,12 @@ export const Header = () => {
           </Link>
         </div>
         <div className="flex items-center justify-center gap-20 sm:gap-15 underline md:pt-24 md:text-xl lg:pt-10 lg:h-[200px] xl:pr-36 xl:pt-1">
-          {NAV_ITEMS.map((item, index) => (
-            <div key={index}>
-              <button className="text-purple-contact hover:scale-125 transition-all duration-300 ">
+          {NAV_ITEMS.map((item) => (
+            <div key={item.id}>
+              <button
+              onClick={() => scrollToElement(item.id)}
+                className="text-purple-contact hover:scale-125 transition-all duration-300 "
+              >
                 {item.label}
               </button>
             </div>

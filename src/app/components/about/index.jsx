@@ -56,7 +56,10 @@ export const About = () => {
           </p>
         </div>
         <div>
-          <p className="text-beige-header font-light text-center pb-5 xl:text-2xl">
+          <p
+            id="contact"
+            className="text-beige-header font-light text-center pb-5 xl:text-2xl"
+          >
             Fale conosco:
           </p>
         </div>

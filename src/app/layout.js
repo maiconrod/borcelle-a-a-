@@ -18,6 +18,13 @@ const gochi = Gochi_Hand({
 export const metadata = {
   title: "Borcelle Açaí Delivery",
   description: "Revitalize seu paladar com Borcelle",
+  favicon: "/images/favicon.svg",
+  contentType: "website",
+  language: "pt-BR",
+  author: "Maicon Rodrigues",
+  keywords: "açaí, delivery, loja de açaí, Borcelle, sorvete, comida saudável",
+  canonicalUrl: "",
+  charset: "UTF-8"
 };
 
 export default function RootLayout({ children }) {

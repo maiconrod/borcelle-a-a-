@@ -1,14 +1,11 @@
-
-
-export const ItemsCart = ({item}) => {
-  
+export const ItemsCart = ({ item }) => {
   return (
     <div
       className=""
       initial={{ opacity: 0, scale: 0 }}
       whileInView={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
-      transition={{ duration: 0.3}}
+      transition={{ duration: 0.3 }}
     >
       <div className="flex items-center justify-between">
         <p className=" text-purple-contact font-light max-w-[70%] ">

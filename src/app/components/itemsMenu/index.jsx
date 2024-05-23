@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaCartPlus } from "react-icons/fa";
+import { useCart } from "../cartContext";
 
 const MENU_ITEMS = [
   {
@@ -89,7 +90,11 @@ const MENU_ITEMS = [
 ];
 
 export const ItemsMenu = () => {
-
+  const cart = useCart()
+  const add = item => () => {
+    cart.addToCart(item)
+  }
+  
   return (
     <div>
       <div className="w-full md:grid md:grid-cols-2 lg:grid-cols-3 lg:max-w-[50%] lg:ml-[50%]">
@@ -119,6 +124,7 @@ export const ItemsMenu = () => {
               <div className="flex items-center justify-center">
                 <button
                 className="text-beige-header text-2xl bg-purple-contact/80 py-3 px-6 rounded-xl shadow-md shadow-slate-950 hover:ring-2 hover:ring-purple-800 hover:bg-purple-contact transition-all duration-300"
+                onClick={add(item)}
                 >
                   {item.icon}
                 </button>
