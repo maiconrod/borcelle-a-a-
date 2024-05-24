@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useCart } from "../cartContext";
 import ReactModal from "react-modal";
+import { useCart } from "../cartContext";
 
 export const ModalCart = ({
   isOpen,
@@ -9,6 +9,8 @@ export const ModalCart = ({
   itemsCount,
   totalPrice,
 }) => {
+  const { addToCart, decreaseQuantity, removeFromCart } = useCart();
+
   if (isOpen) {
     return (
       <ReactModal
@@ -40,11 +42,13 @@ export const ModalCart = ({
                 {cart &&
                   Object.keys(cart).map((key) => {
                     const { item, quantity } = cart[key];
-                    const itemTotal = (
-                      parseFloat(
-                        item.price.replace("R$", "").replace(",", ".")
-                      ) * quantity
-                    ).toFixed(2);
+                    const itemTotal = item.price
+                      ? (
+                          parseFloat(
+                            item.price.replace("R$", "").replace(",", ".")
+                          ) * quantity
+                        ).toFixed(2)
+                      : 0;
                     return (
                       <div
                         key={item.id}
@@ -53,12 +57,37 @@ export const ModalCart = ({
                         <img
                           src={item.src}
                           alt={item.description}
-                          className="max-w-[40%] md:max-w-[25%] rounded"
+                          className="max-w-[40%] md:max-w-[30%] rounded"
                         />
-                        <div className="flex flex-col items-end px-2 max-w-[70%] md:max-w-[100%] md:text-xl md:gap-1">
+                        <div className="flex flex-col items-end px-2 max-w-[70%] md:max-w-[100%] md:text-xl">
                           <p className="text-end text-sm">{item.description}</p>
-                          <p className="">{item.price}</p>
-                          <p className="font-bold">{quantity} unidade(s)</p>
+                          <p className="text-base">{item.price}</p>
+                          <div className="flex gap-1 mt-2 items-center justify-center">
+                            <button
+                              onClick={() => {
+                                decreaseQuantity(item.id);
+                              }}
+                              className="bg-red-700 text-base text-white px-2 rounded my-2 md:my-3"
+                            >
+                              -
+                            </button>
+                            <input
+                              value={quantity}
+                              className="font-bold text-center w-8 h-8 border-none rounded appearance-none text-purple-contact"
+                            ></input>
+                            <button
+                              onClick={() => addToCart(item)}
+                              className="bg-green-700 text-base text-white px-2 rounded my-2 md:my-3"
+                            >
+                              +
+                            </button>
+                            <button
+                              onClick={() => removeFromCart(item.id)}
+                              className="bg-red-700 text-base text-white px-2 rounded my-2 md:my-3"
+                            >
+                              Remover
+                            </button>
+                          </div>
                           <p className="font-bold text-xl md:text-2xl">
                             Total: R$ {itemTotal}
                           </p>
@@ -69,7 +98,7 @@ export const ModalCart = ({
               </ul>
             )}
           </div>
-          <p className="font-bold text-purple-contact mt-2 text-2xl md:text-3xl">
+          <p className="font-bold text-purple-contact text-end mt-2 text-2xl md:text-3xl">
             Total: {`R$${totalPrice}`}
           </p>
           <p className="font-bold mt-4 text-purple-contact">
@@ -86,14 +115,14 @@ export const ModalCart = ({
 
           <div className="flex items-center justify-between mt-5 w-full">
             <button
-              className="bg-red-500 text-white px-4 py-1 rounded"
+              className="bg-red-700 text-white px-4 py-1 rounded"
               onClick={setModalOpen}
             >
               Fechar
             </button>
             <button
               id="checkout-btn"
-              className="bg-green-500 text-white px-4 py-1 rounded"
+              className="bg-green-700 text-white px-4 py-1 rounded"
             >
               Finalizar pedido
             </button>

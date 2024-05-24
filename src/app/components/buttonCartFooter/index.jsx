@@ -2,7 +2,7 @@
 
 import { FaCartShopping } from "react-icons/fa6";
 import { ModalCart } from "../modalCart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../cartContext";
 
 export const ButtonCartFooter = () => {
@@ -11,19 +11,24 @@ export const ButtonCartFooter = () => {
   const closeModalFunction = () => setOpenModal(!openModal);
 
   const { cart } = useCart();
+
   const itemsCount = Object.keys(cart).reduce((prev, curr) => {
     return prev + cart[curr].quantity;
   }, 0);
 
-  const totalPrice = Object.keys(cart).reduce((prev, curr) => {
-    const itemTotal = parseFloat(cart[curr].item.price.replace('R$', '').replace(',', '.')) * cart[curr].quantity;
-    return prev + itemTotal;
-  }, 0).toFixed(2);
+  const totalPrice = Object.keys(cart)
+    .reduce((prev, curr) => {
+      const itemTotal =
+        parseFloat(cart[curr].item.price.replace("R$", "").replace(",", ".")) *
+        cart[curr].quantity;
+      return prev + itemTotal;
+    }, 0)
+    .toFixed(2);
 
   return (
     <div className="fixed bottom-0 w-full bg-purple-cart py-3 z-40 flex items-center justify-center">
       <button
-        className="text-white flex items-center justify-center gap-2 font-semibold"
+        className="text-white/80 hover:text-white flex items-center justify-center gap-2 font-semibold transition-all duration-300"
         onClick={() => setOpenModal(true)}
       >
         {itemsCount > 0 ? <span>({itemsCount})</span> : <span>(0)</span>} Ver
@@ -31,11 +36,11 @@ export const ButtonCartFooter = () => {
         <FaCartShopping />
       </button>
       <ModalCart
-      isOpen={openModal}
-      setModalOpen={closeModalFunction}
-      cart={cart}
-      itemsCount={itemsCount}
-      totalPrice={totalPrice}
+        isOpen={openModal}
+        setModalOpen={closeModalFunction}
+        cart={cart}
+        itemsCount={itemsCount}
+        totalPrice={totalPrice}
       />
     </div>
   );
