@@ -46,7 +46,7 @@ export const CartProvider = ({ children }) => {
         let currentQuantity = newCart[itemId].quantity;
   
         if (currentQuantity > 1) {
-          newCart[itemId].quantity = currentQuantity - .5;
+          newCart[itemId].quantity = currentQuantity - 1;
         } else {
           delete newCart[itemId];
         }
