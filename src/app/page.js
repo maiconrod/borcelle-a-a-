@@ -20,6 +20,7 @@ export default function Home() {
       <link rel="canonical" href={metadata.canonicalUrl} />
       <meta charset={metadata.charset} />
       <meta property="og:image" content="/images/logoCardapio.png"/>
+      <meta name="google-site-verification" content="EipSFK0SbdOzCPR7ltEnhgnWnFjMIvIKtRWrl89IFtc" />
       <HeroSection />
       <Menu />
       <About />
